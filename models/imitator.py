@@ -10,6 +10,7 @@ from utils.detectors import PersonMaskRCNNDetector
 import utils.cv_utils as cv_utils
 import utils.util as util
 
+print(torch.cuda.is_available())
 
 class Imitator(BaseModel):
     def __init__(self, opt):
