@@ -46,9 +46,9 @@ def generate_actor_result(test_opt, src_img_path):
     test_opt.src_path = src_img_path
 
     if test_opt.post_tune:
-        adaptive_personalize(test_opt, imitator, visualizer=None)
+        adaptive_personalize(test_opt, imitator, visualizer=None, output_path = './outputs/results/demos/imitators')
     else:
-        imitator.personalize(test_opt.src_path, visualizer=None)
+        imitator.personalize(test_opt.src_path, visualizer=None, output_path = './outputs/results/demos/imitators')
 
     action_list_dict = {'dance': MIXAMO_DANCE_ACTION_IDX_LIST,
                         'base': MIXAMO_BASE_ACTION_IDX_LIST,
@@ -94,9 +94,7 @@ def main():
 
     test_opt.output_dir = mkdir('./outputs/results/demos/imitators')
     # source images from iPER
-    images_paths = ['./assets/src_imgs/imper_A_Pose/009_5_1_000.jpg',
-                    './assets/src_imgs/imper_A_Pose/024_8_2_0000.jpg',
-                    './assets/src_imgs/fashion_woman/Sweaters-id_0000088807_4_full.jpg']
+    images_paths = ['./assets/src_imgs/test.jpg']
 
     for src_img_path in tqdm(images_paths):
         generate_actor_result(test_opt, src_img_path)
