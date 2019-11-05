@@ -196,13 +196,13 @@ def make_dataset(opt):
     return data_loader
 
 
-def adaptive_personalize(opt, imitator, visualizer):
+def adaptive_personalize(opt, imitator, visualizer, output_path):
     output_dir = opt.output_dir
     mkdirs([os.path.join(output_dir, 'imgs'), os.path.join(output_dir, 'pairs')])
 
     # TODO check if it has been computed.
     print('\n\t\t\tPersonalization: meta imitation...')
-    imitator.personalize(opt.src_path, visualizer=None)
+    imitator.personalize(opt.src_path, visualizer=None, output_path = output_path)
     meta_imitate(opt, imitator, prior_tgt_path=opt.pri_path, visualizer=None, save_imgs=True)
 
     # post tune
